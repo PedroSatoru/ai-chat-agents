@@ -156,31 +156,132 @@ flowchart LR
 
 ---
 
-## 5. Interfaces dos Três Fluxos Principais
+## 5. Componentes, Interfaces e Contratos
+
+### 5.1 Identificação de Componentes
+
+Cada interface identificada é realizada por um componente com responsabilidade única:
+
+| Interface | Componente | Responsabilidade |
+|---|---|---|
+| `MensagemService` | **ChatComponent** | Orquestra o envio de mensagens, monta o prompt final e persiste o histórico de conversas. |
+| `AgenteService` | **AgenteComponent** | Gerencia o ciclo de vida dos agentes personalizados (criação, edição, consulta e exclusão). |
+| `ContextoPessoalService` | **ContextoComponent** | Mantém o contexto pessoal persistente do usuário para enriquecimento automático dos prompts. |
+
+---
+
+### 5.2 Interfaces Fornecidas e Contratos das Operações
+
+#### ChatComponent — fornece `MensagemService`
 
 ```text
 <<interface>>
 MensagemService
 ----------------------------------------
-+ enviarMensagem(usuario_id: int, agente_id: str, mensagem: str, modelo: str, max_tokens: int, temperature: float) -> dict
-+ consultarHistorico(usuario_id: int, chat_id: str) -> list[dict]
-+ listarChats(usuario_id: int) -> list[dict]
-+ deletarChat(usuario_id: int, chat_id: str) -> bool
++ enviar_mensagem(usuario_id: int, agente_id: str, mensagem: str, modelo: str, max_tokens: int, temperature: float) -> dict
++ consultar_historico(usuario_id: int, chat_id: str) -> list[dict]
++ listar_chats(usuario_id: int) -> list[dict]
++ deletar_chat(usuario_id: int, chat_id: str) -> bool
+```
 
+**Contrato: `enviar_mensagem`**
+
+Pré-condições:
+- `usuario_id` deve referenciar um usuário autenticado e ativo.
+- `agente_id` deve referenciar um agente existente pertencente ao usuário.
+- `mensagem` não pode ser vazia.
+- `temperature` deve estar no intervalo `[0.0, 1.0]`.
+
+Pós-condições:
+- A interação é persistida no histórico do chat no MongoDB.
+- O retorno contém a resposta do modelo e os metadados de consumo de tokens.
+
+---
+
+#### AgenteComponent — fornece `AgenteService`
+
+```text
 <<interface>>
 AgenteService
 ----------------------------------------
-+ criarAgente(usuario_id: int, nome: str, especialidade: str, tom: str, estilo: str) -> dict
-+ editarAgente(usuario_id: int, agente_id: str, nome: str | None, especialidade: str | None, tom: str | None, estilo: str | None) -> dict
-+ buscarAgentePorId(usuario_id: int, agente_id: str) -> dict
-+ listarAgentes(usuario_id: int) -> list[dict]
-+ deletarAgente(usuario_id: int, agente_id: str) -> bool
++ criar_agente(usuario_id: int, nome: str, especialidade: str, tom: str, estilo: str) -> dict
++ editar_agente(usuario_id: int, agente_id: str, nome: str | None, especialidade: str | None, tom: str | None, estilo: str | None) -> dict
++ buscar_agente_por_id(usuario_id: int, agente_id: str) -> dict
++ listar_agentes(usuario_id: int) -> list[dict]
++ deletar_agente(usuario_id: int, agente_id: str) -> bool
+```
 
+**Contrato: `criar_agente`**
+
+Pré-condições:
+- `usuario_id` deve referenciar um usuário existente.
+- `nome` não pode ser vazio e deve ser único por usuário.
+- `especialidade` não pode ser vazia.
+
+Pós-condições:
+- O agente é persistido no MongoDB associado ao `usuario_id`.
+- O retorno contém os dados do agente criado, incluindo o `agente_id` gerado.
+
+---
+
+#### ContextoComponent — fornece `ContextoPessoalService`
+
+```text
 <<interface>>
 ContextoPessoalService
 ----------------------------------------
-+ criarContexto(usuario_id: int, preferencias: str, nivel_tecnico: str, objetivos: str, instrucoes_permanentes: str) -> dict
-+ atualizarContexto(usuario_id: int, preferencias: str | None, nivel_tecnico: str | None, objetivos: str | None, instrucoes_permanentes: str | None) -> dict
-+ buscarContexto(usuario_id: int) -> dict
-+ deletarContexto(usuario_id: int) -> bool
++ criar_contexto(usuario_id: int, preferencias: str, nivel_tecnico: str, objetivos: str, instrucoes_permanentes: str) -> dict
++ atualizar_contexto(usuario_id: int, preferencias: str | None, nivel_tecnico: str | None, objetivos: str | None, instrucoes_permanentes: str | None) -> dict
++ buscar_contexto(usuario_id: int) -> dict
++ deletar_contexto(usuario_id: int) -> bool
 ```
+
+**Contrato: `criar_contexto`**
+
+Pré-condições:
+- `usuario_id` deve referenciar um usuário existente.
+- Não deve existir contexto previamente cadastrado para o usuário.
+- `instrucoes_permanentes` não pode ultrapassar o limite de caracteres definido.
+
+Pós-condições:
+- O contexto é persistido no MongoDB associado ao `usuario_id`.
+- O retorno contém os dados do contexto criado.
+
+---
+
+### 5.3 Dependências entre Componentes
+
+| Componente | Requer | Motivo |
+|---|---|---|
+| **ChatComponent** | `AgenteService` (AgenteComponent) | Precisa recuperar a especialidade e as configurações do agente selecionado para compor o prompt final. |
+| **ChatComponent** | `ContextoPessoalService` (ContextoComponent) | Precisa recuperar o contexto pessoal do usuário para enriquecer o prompt antes do envio ao provedor. |
+| **AgenteComponent** | — | Não requer nenhum outro componente do sistema. |
+| **ContextoComponent** | — | Não requer nenhum outro componente do sistema. |
+
+---
+
+### 5.4 Diagrama de Componentes
+
+```mermaid
+flowchart LR
+    subgraph ChatComponent
+        MS["<<fornece>>\nMensagemService"]
+        MS_req1["<<requer>>\nAgenteService"]
+        MS_req2["<<requer>>\nContextoPessoalService"]
+    end
+
+    subgraph AgenteComponent
+        AS["<<fornece>>\nAgenteService"]
+    end
+
+    subgraph ContextoComponent
+        CS["<<fornece>>\nContextoPessoalService"]
+    end
+
+    OR[Provedor LLM OpenRouter]
+
+    MS_req1 -->|"buscar_agente_por_id()"| AS
+    MS_req2 -->|"buscar_contexto()"| CS
+    MS -->|"envia prompt montado"| OR
+```
+ 
