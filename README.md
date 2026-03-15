@@ -9,6 +9,8 @@
 ## Objetivo desta entrega
 Implementar **2 componentes com dependência entre si**, garantindo comunicação apenas por interfaces e com injeção de dependência.
 
+Toda a documentação do trabalho está centralizada na pasta `docs/`.
+
 Esta entrega reutiliza a base do projeto anterior (`API_polyglot-persistence`) e mantém os mesmos bancos já reativados:
 - PostgreSQL (mesma `DATABASE_URL`)
 - MongoDB (`chat_db`, coleção `chat_conversations`)
@@ -56,9 +58,15 @@ Fluxo de DI:
 
 ```
 ai-chat-agents/
+  docs/
+    uses-cases.md
+    documentacao_tecnologias.md
+    pontos-de-reuso.md
   app/
     main.py
     startup.py
+    .env.example
+    requirements.txt
     core/config.py
     shared/utils.py
     chat/
@@ -74,17 +82,25 @@ ai-chat-agents/
         message.py
         user_message.py
         assistant_message.py
-  requirements.txt
-  .env.example
 ```
 
 ## Como executar
 
 1. Instalar dependências
-   - `pip install -r requirements.txt`
-2. Criar `.env` a partir de `.env.example`
-3. Subir API
-   - `uvicorn app.main:app --reload`
+  - `pip install -r app/requirements.txt`
+2. Criar `.env` na raiz a partir de `app/.env.example`
+  - `cp app/.env.example .env`
+3. Subir API a partir da raiz do projeto
+  - `uvicorn app.main:app --reload`
+
+A revisão do modelo arquitetural foi consolidada em:
+- `docs/uses-cases.md`
+
+Nesta revisão, os contratos foram atualizados para as interfaces implementadas na entrega parcial:
+- `IChatService` (fornecida por `ChatService`)
+- `IChatRepository` (fornecida por `MongoChatRepository`)
+
+Também foi documentado o fluxo de dependências via DI entre Router -> IChatService -> IChatRepository.
 
 ## Observação acadêmica
 

@@ -160,92 +160,57 @@ flowchart LR
 
 ### 5.1 Identificação de Componentes
 
-Cada interface identificada é realizada por um componente com responsabilidade única:
+Nesta entrega parcial, os componentes implementados e suas responsabilidades são:
 
 | Interface | Componente | Responsabilidade |
 |---|---|---|
-| `MensagemService` | **ChatComponent** | Orquestra o envio de mensagens, monta o prompt final e persiste o histórico de conversas. |
-| `AgenteService` | **AgenteComponent** | Gerencia o ciclo de vida dos agentes personalizados (criação, edição, consulta e exclusão). |
-| `ContextoPessoalService` | **ContextoComponent** | Mantém o contexto pessoal persistente do usuário para enriquecimento automático dos prompts. |
+| `IChatService` | **ChatService** | Orquestra o envio de mensagens e consulta de histórico, aplicando regras de negócio do chat. |
+| `IChatRepository` | **MongoChatRepository** | Persiste e recupera conversas no MongoDB. |
 
 ---
 
 ### 5.2 Interfaces Fornecidas e Contratos das Operações
 
-#### ChatComponent — fornece `MensagemService`
+#### ChatService — fornece `IChatService`
 
 ```text
 <<interface>>
-MensagemService
+IChatService
 ----------------------------------------
-+ enviar_mensagem(usuario_id: int, agente_id: str, mensagem: str, modelo: str, max_tokens: int, temperature: float) -> dict
-+ consultar_historico(usuario_id: int, chat_id: str) -> list[dict]
-+ listar_chats(usuario_id: int) -> list[dict]
-+ deletar_chat(usuario_id: int, chat_id: str) -> bool
++ send_message(user_id: str, payload: SendMessagePayload) -> dict
++ get_history(user_id: str, conversation_id: str) -> list[dict]
 ```
 
-**Contrato: `enviar_mensagem`**
+**Contrato: `send_message`**
 
 Pré-condições:
-- `usuario_id` deve referenciar um usuário autenticado e ativo.
-- `agente_id` deve referenciar um agente existente pertencente ao usuário.
-- `mensagem` não pode ser vazia.
-- `temperature` deve estar no intervalo `[0.0, 1.0]`.
+- `user_id` deve ser informado no header `x-user-id`.
+- `payload.prompt` não pode ser vazio.
+- `payload.temperature` deve estar no intervalo `[0.0, 1.0]`.
 
 Pós-condições:
-- A interação é persistida no histórico do chat no MongoDB.
-- O retorno contém a resposta do modelo e os metadados de consumo de tokens.
+- A conversa é criada/atualizada no MongoDB via `IChatRepository`.
+- O retorno contém `conversation_id` e a lista de mensagens da conversa.
 
 ---
 
-#### AgenteComponent — fornece `AgenteService`
+#### MongoChatRepository — fornece `IChatRepository`
 
 ```text
 <<interface>>
-AgenteService
+IChatRepository
 ----------------------------------------
-+ criar_agente(usuario_id: int, nome: str, especialidade: str, tom: str, estilo: str) -> dict
-+ editar_agente(usuario_id: int, agente_id: str, nome: str | None, especialidade: str | None, tom: str | None, estilo: str | None) -> dict
-+ buscar_agente_por_id(usuario_id: int, agente_id: str) -> dict
-+ listar_agentes(usuario_id: int) -> list[dict]
-+ deletar_agente(usuario_id: int, agente_id: str) -> bool
++ get_conversation(user_id: str, conversation_id: str) -> Optional[dict]
++ save_conversation(conversation: dict) -> None
 ```
 
-**Contrato: `criar_agente`**
+**Contrato: `save_conversation`**
 
 Pré-condições:
-- `usuario_id` deve referenciar um usuário existente.
-- `nome` não pode ser vazio e deve ser único por usuário.
-- `especialidade` não pode ser vazia.
+- `conversation` deve conter `conversation_id` e `user_id`.
 
 Pós-condições:
-- O agente é persistido no MongoDB associado ao `usuario_id`.
-- O retorno contém os dados do agente criado, incluindo o `agente_id` gerado.
-
----
-
-#### ContextoComponent — fornece `ContextoPessoalService`
-
-```text
-<<interface>>
-ContextoPessoalService
-----------------------------------------
-+ criar_contexto(usuario_id: int, preferencias: str, nivel_tecnico: str, objetivos: str, instrucoes_permanentes: str) -> dict
-+ atualizar_contexto(usuario_id: int, preferencias: str | None, nivel_tecnico: str | None, objetivos: str | None, instrucoes_permanentes: str | None) -> dict
-+ buscar_contexto(usuario_id: int) -> dict
-+ deletar_contexto(usuario_id: int) -> bool
-```
-
-**Contrato: `criar_contexto`**
-
-Pré-condições:
-- `usuario_id` deve referenciar um usuário existente.
-- Não deve existir contexto previamente cadastrado para o usuário.
-- `instrucoes_permanentes` não pode ultrapassar o limite de caracteres definido.
-
-Pós-condições:
-- O contexto é persistido no MongoDB associado ao `usuario_id`.
-- O retorno contém os dados do contexto criado.
+- A conversa é persistida/atualizada na coleção `chat_conversations`.
 
 ---
 
@@ -253,10 +218,9 @@ Pós-condições:
 
 | Componente | Requer | Motivo |
 |---|---|---|
-| **ChatComponent** | `AgenteService` (AgenteComponent) | Precisa recuperar a especialidade e as configurações do agente selecionado para compor o prompt final. |
-| **ChatComponent** | `ContextoPessoalService` (ContextoComponent) | Precisa recuperar o contexto pessoal do usuário para enriquecer o prompt antes do envio ao provedor. |
-| **AgenteComponent** | — | Não requer nenhum outro componente do sistema. |
-| **ContextoComponent** | — | Não requer nenhum outro componente do sistema. |
+| **Router (camada de API)** | `IChatService` | Consome apenas a abstração do serviço de chat via injeção de dependência. |
+| **ChatService** | `IChatRepository` | Persiste e consulta conversas sem depender da implementação concreta de banco. |
+| **MongoChatRepository** | — | Implementação concreta que acessa MongoDB. |
 
 ---
 
@@ -264,24 +228,28 @@ Pós-condições:
 
 ```mermaid
 flowchart LR
-    subgraph ChatComponent
-        MS["<<fornece>>\nMensagemService"]
-        MS_req1["<<requer>>\nAgenteService"]
-        MS_req2["<<requer>>\nContextoPessoalService"]
+    subgraph APILayer["Camada API"]
+        RT["Router"]
     end
 
-    subgraph AgenteComponent
-        AS["<<fornece>>\nAgenteService"]
+    subgraph ServiceLayer["Camada Serviço"]
+        CS["<<fornece>>\nIChatService\nChatService"]
+        CSREQ["<<requer>>\nIChatRepository"]
     end
 
-    subgraph ContextoComponent
-        CS["<<fornece>>\nContextoPessoalService"]
+    subgraph RepositoryLayer["Camada Repositório"]
+        MONGO["<<implementa>>\nIChatRepository\nMongoChatRepository"]
     end
 
-    OR[Provedor LLM OpenRouter]
-
-    MS_req1 -->|"buscar_agente_por_id()"| AS
-    MS_req2 -->|"buscar_contexto()"| CS
-    MS -->|"envia prompt montado"| OR
+    RT -->|"Depends(IChatService)"| CS
+    CSREQ --> MONGO
 ```
+
+### 5.5 Mecanismo de Injeção de Dependência
+
+- A resolução de `IChatService` ocorre em `app/chat/dependencies.py` com FastAPI `Depends`.
+- A construção do serviço fica centralizada em `app/startup.py`.
+- O `Startup` injeta `MongoChatRepository` no construtor de `ChatService`.
+
+Esse arranjo evita acoplamento direto entre endpoint e infraestrutura de persistência.
  
