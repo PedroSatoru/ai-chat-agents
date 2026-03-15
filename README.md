@@ -11,10 +11,6 @@ Implementar **2 componentes com dependência entre si**, garantindo comunicaçã
 
 Toda a documentação do trabalho está centralizada na pasta `docs/`.
 
-Esta entrega reutiliza a base do projeto anterior (`API_polyglot-persistence`) e mantém os mesmos bancos já reativados:
-- PostgreSQL (mesma `DATABASE_URL`)
-- MongoDB (`chat_db`, coleção `chat_conversations`)
-
 ## Componentes implementados
 
 ### 1) Componente Cliente: `ChatService`
@@ -45,6 +41,87 @@ Fluxo de DI:
 1. `router` pede `IChatService`
 2. `dependencies` chama `startup.build_chat_service()`
 3. `startup` injeta `MongoChatRepository` no construtor de `ChatService`
+
+## Como ocorre a comunicação entre os componentes
+
+A comunicação entre os dois componentes implementados segue um fluxo em camadas, mediado exclusivamente pelas interfaces:
+
+```
+HTTP Request
+    │
+    ▼
+Router (app/chat/router.py)
+    │  chama service.send_message() ou service.get_history()
+    │  referência do tipo: IChatService
+    ▼
+ChatService (app/chat/service/chat_service.py)
+    │  chama self._repository.get_conversation() / save_conversation()
+    │  referência do tipo: IChatRepository
+    ▼
+MongoChatRepository (app/chat/repository/mongo_chat_repository.py)
+    │  executa operações reais no MongoDB
+    ▼
+MongoDB (chat_db → chat_conversations)
+```
+
+**Passo a passo de uma requisição `POST /api/chat/send`:**
+
+1. O `router` recebe a requisição HTTP com o payload e o header `x-user-id`.
+2. O FastAPI resolve `IChatService` via `Depends(get_chat_service)` — o router nunca sabe qual classe concreta está sendo usada.
+3. O router chama `service.send_message(user_id, payload)` no contrato de `IChatService`.
+4. O `ChatService` executa a regra de negócio: gera ou recupera o `conversation_id`, monta as mensagens e chama `self._repository.get_conversation()` e `self._repository.save_conversation()` no contrato de `IChatRepository`.
+5. O `MongoChatRepository` traduz essas chamadas para operações MongoDB (`find_one` e `update_one` com `upsert`).
+6. O resultado sobe pela cadeia de volta ao router, que serializa e devolve ao cliente.
+
+Em nenhum momento o router conhece `ChatService` nem `MongoChatRepository`; em nenhum momento o `ChatService` conhece `MongoChatRepository`. Toda a comunicação ocorre pelos contratos definidos nas interfaces.
+
+---
+
+## Justificativa do desacoplamento direto
+
+O acoplamento direto foi evitado por três decisões arquiteturais combinadas:
+
+### 1. Interfaces como único contrato de comunicação
+
+Cada camada depende apenas da abstração da camada seguinte, nunca da implementação concreta:
+
+| Quem chama | Depende de | Nunca importa |
+|---|---|---|
+| `router.py` | `IChatService` | `ChatService` |
+| `ChatService` | `IChatRepository` | `MongoChatRepository` |
+
+Isso significa que trocar `MongoChatRepository` por, por exemplo, um `InMemoryChatRepository` para testes exige alterar **apenas** a fábrica em `startup.py`, sem tocar no `ChatService` nem no `router`.
+
+### 2. Injeção de dependência via construtor
+
+O `ChatService` recebe o repositório pelo construtor:
+
+```python
+# app/chat/service/chat_service.py
+class ChatService(IChatService):
+    def __init__(self, repository: IChatRepository):  # tipo: interface
+        self._repository = repository
+```
+
+Ele nunca instancia `MongoChatRepository` diretamente. Quem decide qual implementação usar é o `Startup`, que concentra toda a lógica de montagem do grafo de dependências em um único lugar (`app/startup.py`).
+
+### 3. Composition root centralizado
+
+O único ponto onde classes concretas são referenciadas entre si é `app/startup.py`:
+
+```python
+# app/startup.py
+class Startup:
+    def get_chat_repository(self) -> IChatRepository:      # retorna interface
+        return MongoChatRepository(mongo_db)               # única menção à classe concreta
+
+    def build_chat_service(self) -> IChatService:          # retorna interface
+        return ChatService(repository=self.get_chat_repository())
+```
+
+Todo o restante do código (router, service, testes futuros) trabalha apenas com as interfaces — se o banco mudar de MongoDB para outro, o impacto fica restrito a este arquivo e à nova classe que implementar `IChatRepository`.
+
+---
 
 ## Endpoints desta entrega
 
