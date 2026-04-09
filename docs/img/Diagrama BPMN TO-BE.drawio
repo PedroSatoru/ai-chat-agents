@@ -16,25 +16,25 @@
         <mxCell id="_5z1tQHSS0RmbRueAPGT-56" parent="1" style="rounded=1;whiteSpace=wrap;arcSize=50;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Início" vertex="1">
           <mxGeometry height="39" width="64" x="519" y="814" as="geometry" />
         </mxCell>
-        <mxCell id="_5z1tQHSS0RmbRueAPGT-57" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Selecionar agente e enviar mensagem" vertex="1">
+        <mxCell id="_5z1tQHSS0RmbRueAPGT-57" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Enviar mensagem ao atendimento" vertex="1">
           <mxGeometry height="78" width="260" x="620" y="795" as="geometry" />
         </mxCell>
         <mxCell id="_5z1tQHSS0RmbRueAPGT-58" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Receber requisição POST /chat/send" vertex="1">
           <mxGeometry height="78" width="260" x="519" y="547" as="geometry" />
         </mxCell>
-        <mxCell id="_5z1tQHSS0RmbRueAPGT-59" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Validar autenticação x-user-id" vertex="1">
+        <mxCell id="_5z1tQHSS0RmbRueAPGT-59" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Confirmar identificação do usuário" vertex="1">
           <mxGeometry height="78" width="260" x="829" y="547" as="geometry" />
         </mxCell>
         <mxCell id="_5z1tQHSS0RmbRueAPGT-60" parent="1" style="rhombus;strokeWidth=2;whiteSpace=wrap;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Usuário autenticado?" vertex="1">
           <mxGeometry height="204" width="204" x="1139" y="484" as="geometry" />
         </mxCell>
-        <mxCell id="_5z1tQHSS0RmbRueAPGT-61" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Validar payload: prompt, temperatura, modelo" vertex="1">
+        <mxCell id="_5z1tQHSS0RmbRueAPGT-61" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Verificar dados mínimos da solicitação" vertex="1">
           <mxGeometry height="78" width="260" x="1420" y="492" as="geometry" />
         </mxCell>
         <mxCell id="_5z1tQHSS0RmbRueAPGT-62" parent="1" style="rhombus;strokeWidth=2;whiteSpace=wrap;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Payload válido?" vertex="1">
           <mxGeometry height="163" width="163" x="1730" y="450" as="geometry" />
         </mxCell>
-        <mxCell id="_5z1tQHSS0RmbRueAPGT-63" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Definir conversation_id por chat_id existente ou novo hash" vertex="1">
+        <mxCell id="_5z1tQHSS0RmbRueAPGT-63" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Identificar conversa em andamento" vertex="1">
           <mxGeometry height="102" width="260" x="1970" y="420" as="geometry" />
         </mxCell>
         <mxCell id="_5z1tQHSS0RmbRueAPGT-64" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Buscar conversa por conversation_id e user_id" vertex="1">
@@ -46,22 +46,22 @@
         <mxCell id="_5z1tQHSS0RmbRueAPGT-66" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Criar nova conversa com title created_at e messages" vertex="1">
           <mxGeometry height="78" width="260" x="2839" y="389" as="geometry" />
         </mxCell>
-        <mxCell id="_5z1tQHSS0RmbRueAPGT-67" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Registrar mensagem do usuário no histórico" vertex="1">
+        <mxCell id="_5z1tQHSS0RmbRueAPGT-67" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Registrar solicitação no histórico" vertex="1">
           <mxGeometry height="78" width="260" x="3149" y="432" as="geometry" />
         </mxCell>
-        <mxCell id="_5z1tQHSS0RmbRueAPGT-68" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Montar prompt final com contexto especialidade e mensagem" vertex="1">
+        <mxCell id="_5z1tQHSS0RmbRueAPGT-68" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Encaminhar solicitação ao agente especializado" vertex="1">
           <mxGeometry height="102" width="260" x="3459" y="420" as="geometry" />
         </mxCell>
         <mxCell id="_5z1tQHSS0RmbRueAPGT-69" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Persistir estado parcial da conversa" vertex="1">
           <mxGeometry height="78" width="260" x="3769" y="432" as="geometry" />
         </mxCell>
-        <mxCell id="_5z1tQHSS0RmbRueAPGT-70" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Registrar falha e retornar erro de integração" vertex="1">
+        <mxCell id="_5z1tQHSS0RmbRueAPGT-70" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Tratar indisponibilidade de atendimento" vertex="1">
           <mxGeometry height="78" width="260" x="4729" y="504" as="geometry" />
         </mxCell>
-        <mxCell id="_5z1tQHSS0RmbRueAPGT-71" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Registrar resposta do assistente no histórico" vertex="1">
+        <mxCell id="_5z1tQHSS0RmbRueAPGT-71" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Registrar resposta no histórico" vertex="1">
           <mxGeometry height="78" width="260" x="4729" y="376" as="geometry" />
         </mxCell>
-        <mxCell id="_5z1tQHSS0RmbRueAPGT-72" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Atualizar updated_at e salvar conversa" vertex="1">
+        <mxCell id="_5z1tQHSS0RmbRueAPGT-72" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Apresentar resposta ao usuário" vertex="1">
           <mxGeometry height="78" width="260" x="5039" y="376" as="geometry" />
         </mxCell>
         <mxCell id="_5z1tQHSS0RmbRueAPGT-73" parent="1" style="rounded=1;whiteSpace=wrap;arcSize=50;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Fim com sucesso" vertex="1">
@@ -76,7 +76,7 @@
         <mxCell id="_5z1tQHSS0RmbRueAPGT-76" parent="1" style="rounded=1;whiteSpace=wrap;arcSize=50;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Fim com erro 502" vertex="1">
           <mxGeometry height="39" width="150" x="5094" y="523" as="geometry" />
         </mxCell>
-        <mxCell id="_5z1tQHSS0RmbRueAPGT-77" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Processar prompt no OpenRouter/LLM" vertex="1">
+        <mxCell id="_5z1tQHSS0RmbRueAPGT-77" parent="1" style="whiteSpace=wrap;strokeWidth=2;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Receber resposta do agente" vertex="1">
           <mxGeometry height="78" width="260" x="4104" y="122" as="geometry" />
         </mxCell>
         <mxCell id="_5z1tQHSS0RmbRueAPGT-78" parent="1" style="rhombus;strokeWidth=2;whiteSpace=wrap;fillColor=light-dark(#eeeeee,#1f2020);strokeColor=light-dark(#999999,#cccccc);fontColor=light-dark(#333333,#cccccc);" value="Integração disponível?" vertex="1">
