@@ -14,39 +14,49 @@
 
 ![Diagrama BPMN TO-BE](img/Diagrama%20BPMN%20TO-BE.png)
 
+As tarefas abaixo representam o fluxo operacional do processo TO-BE e devem estar refletidas no diagrama (incluindo início pelo usuário e resposta final ao usuário).
+
 ### 2.1 Descrição das Tarefas do Processo
 
 | ID | Tarefa | Descrição |
 |---|---|---|
-| T01 | Receber requisição de envio | O sistema recebe a chamada de envio de mensagem e identifica usuário, conversa e parâmetros da interação. |
-| T02 | Validar autenticação | O sistema valida o identificador/autenticação do usuário antes de permitir o processamento do fluxo. |
-| T03 | Validar payload | O sistema valida campos obrigatórios, limites e formato dos parâmetros de envio da mensagem. |
-| T04 | Definir conversation_id | O sistema reutiliza o chat_id informado ou cria um novo identificador único para a conversa. |
-| T05 | Consultar conversa atual | O sistema busca a conversa do usuário para continuar um histórico existente ou iniciar um novo. |
-| T06 | Criar conversa inicial | Quando não há conversa prévia, o sistema cria o documento inicial com metadados e estrutura de mensagens. |
-| T07 | Registrar mensagem do usuário | A mensagem enviada é registrada no histórico da conversa com seus metadados de contexto. |
-| T08 | Montar prompt final para IA | O sistema compõe o conteúdo final para inferência unindo contexto, especialidade do agente e mensagem atual. |
-| T09 | Chamar provedor de LLM | O sistema envia a requisição ao provedor externo de IA e aguarda retorno da resposta gerada. |
-| T10 | Registrar resposta e persistir conversa | O sistema grava a resposta do assistente, atualiza a conversa e retorna o resultado ao cliente. |
+| T01 | Enviar mensagem ao atendimento | O usuário inicia o processo enviando sua solicitação no chat para o agente escolhido. |
+| T02 | Confirmar identificação do usuário | O sistema confirma se o usuário pode utilizar o atendimento. Em caso negativo, o processo é encerrado com orientação adequada. |
+| T03 | Verificar dados mínimos da solicitação | O sistema verifica se a mensagem possui conteúdo mínimo para prosseguir. Em caso de inconsistência, solicita correção ao usuário. |
+| T04 | Identificar conversa em andamento | O sistema verifica se o atendimento continua uma conversa existente ou se deve iniciar uma nova conversa. |
+| T05 | Registrar solicitação no histórico | O sistema registra a mensagem do usuário para manter rastreabilidade do atendimento. |
+| T06 | Encaminhar solicitação ao agente especializado | O sistema envia a solicitação para processamento do agente responsável pelo tema. |
+| T07 | Receber resposta do agente | O sistema recebe a resposta gerada pelo agente especializado. |
+| T08 | Tratar indisponibilidade de atendimento | Se o agente estiver indisponível, o sistema informa a situação e orienta o usuário a tentar novamente. |
+| T09 | Registrar resposta no histórico | O sistema registra a resposta no histórico da conversa, mantendo o contexto completo. |
+| T10 | Apresentar resposta ao usuário | O sistema retorna ao usuário uma resposta final (conteúdo gerado ou mensagem de indisponibilidade), encerrando o ciclo da solicitação. |
 
 ---
 
 ## 3. Regras de Negócio (RN)
 
-- **RN01:** Toda requisição de envio de mensagem deve conter `x-user-id` válido.
-- **RN02:** O campo `prompt` é obrigatório e não pode ser vazio.
-- **RN03:** `temperature` deve estar no intervalo de $0.0$ a $1.0$; valores válidos são normalizados para 1 casa decimal.
-- **RN04:** Se `chat_id` não for informado, o sistema deve gerar um novo `conversation_id` único.
-- **RN05:** O histórico de conversa só pode ser acessado pelo mesmo `user_id` dono da conversa.
-- **RN06:** Se a conversa não existir, deve ser criada com título padrão "Nova conversa" quando não houver título informado.
-- **RN07:** Cada envio deve registrar duas entradas no histórico: mensagem do usuário e resposta do assistente.
-- **RN08:** Em falha de integração com LLM, a operação deve retornar erro técnico sem quebrar consistência dos dados já persistidos.
+- **RN01:** Somente usuários identificados podem iniciar e continuar atendimentos no chat.
+- **RN02:** Toda solicitação deve conter uma mensagem com conteúdo mínimo para análise; mensagens vazias não são aceitas.
+- **RN03:** Cada conversa pertence a um único usuário e não pode ser compartilhada com outros usuários.
+- **RN04:** Quando não houver conversa em andamento, o sistema deve abrir uma nova conversa automaticamente.
+- **RN05:** Toda interação deve registrar a solicitação do usuário e a respectiva resposta do atendimento.
+- **RN06:** O usuário deve sempre receber um retorno final da solicitação, seja resposta do agente ou aviso de indisponibilidade.
+- **RN07:** O histórico de conversa deve ser consultado apenas pelo usuário proprietário da conversa.
+- **RN08:** Em indisponibilidade do atendimento especializado, o sistema deve informar o motivo de forma clara e orientar nova tentativa.
 
 ---
 
 ## 4. Diagrama de Casos de Uso (UML)
 
 ![Diagrama de Casos de Uso](img/Diagrama%20de%20casos%20de%20uso.png)
+
+### 4.1 Consistência com o Processo TO-BE
+
+- **UC Enviar mensagem ao agente** corresponde às tarefas **T01, T02 e T03**.
+- **UC Processar solicitação no atendimento** corresponde às tarefas **T04, T05, T06 e T07**.
+- **UC Tratar indisponibilidade** corresponde à tarefa **T08**.
+- **UC Manter histórico da conversa** corresponde à tarefa **T09**.
+- **UC Exibir resposta ao usuário** corresponde à tarefa **T10**.
 
 ---
 
