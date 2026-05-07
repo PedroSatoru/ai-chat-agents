@@ -2,16 +2,16 @@
   <root>
     <mxCell id="0" />
     <mxCell id="1" parent="0" />
-    <mxCell id="n1" parent="1" style="whiteSpace=wrap;html=1;fillColor=#29b6f6;fontColor=#ffffff;strokeColor=#0288d1;fontStyle=1" value="&lt;b&gt;Orquestracao de&lt;br&gt;Atendimento&lt;/b&gt;&lt;br&gt;&lt;br&gt;[Bounded Context]" vertex="1">
+    <mxCell id="n1" parent="1" style="whiteSpace=wrap;html=1;fillColor=#29b6f6;fontColor=#ffffff;strokeColor=#0288d1;fontStyle=1" value="&lt;b&gt;Orquestracao de&lt;br&gt;Atendimento&lt;/b&gt;&lt;br&gt;&lt;br&gt;[Bounded Context]&lt;br&gt;Coordena o fluxo e a resposta final" vertex="1">
       <mxGeometry height="90" width="190" x="210" y="40" as="geometry" />
     </mxCell>
-    <mxCell id="n2" parent="1" style="whiteSpace=wrap;html=1;fillColor=#8bc34a;fontColor=#ffffff;strokeColor=#689f38;fontStyle=1" value="&lt;b&gt;Identidade e&lt;br&gt;Validacao&lt;/b&gt;&lt;br&gt;&lt;br&gt;[Bounded Context]" vertex="1">
+    <mxCell id="n2" parent="1" style="whiteSpace=wrap;html=1;fillColor=#8bc34a;fontColor=#ffffff;strokeColor=#689f38;fontStyle=1" value="&lt;b&gt;Identidade e&lt;br&gt;Validacao&lt;/b&gt;&lt;br&gt;&lt;br&gt;[Bounded Context]&lt;br&gt;Valida usuario e solicitacao" vertex="1">
       <mxGeometry height="90" width="190" x="210" y="270" as="geometry" />
     </mxCell>
-    <mxCell id="n3" parent="1" style="whiteSpace=wrap;html=1;fillColor=#ab47bc;fontColor=#ffffff;strokeColor=#8e24aa;fontStyle=1" value="&lt;b&gt;Conversa e&lt;br&gt;Historico&lt;/b&gt;&lt;br&gt;&lt;br&gt;[Bounded Context]" vertex="1">
+    <mxCell id="n3" parent="1" style="whiteSpace=wrap;html=1;fillColor=#ab47bc;fontColor=#ffffff;strokeColor=#8e24aa;fontStyle=1" value="&lt;b&gt;Conversa e&lt;br&gt;Historico&lt;/b&gt;&lt;br&gt;&lt;br&gt;[Bounded Context]&lt;br&gt;Registra mensagens e historico" vertex="1">
       <mxGeometry height="90" width="190" x="580" y="40" as="geometry" />
     </mxCell>
-    <mxCell id="n4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#9e9e9e;" value="&lt;b&gt;Canal do usuario&lt;/b&gt;&lt;br&gt;&lt;br&gt;[Externo]" vertex="1">
+    <mxCell id="n4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#9e9e9e;" value="&lt;b&gt;Canal do usuario&lt;/b&gt;&lt;br&gt;&lt;br&gt;[Externo]&lt;br&gt;Origem das solicitacoes" vertex="1">
       <mxGeometry height="70" width="190" x="-120" y="50" as="geometry" />
     </mxCell>
     <mxCell id="e1" edge="1" parent="1" source="n4" style="edgeStyle=orthogonalEdgeStyle;dashed=1;html=1;strokeColor=#29b6f6;labelBackgroundColor=#ffffff;strokeWidth=2;" target="n1" value="&lt;b&gt;Cliente/Fornecedor&lt;/b&gt;">
