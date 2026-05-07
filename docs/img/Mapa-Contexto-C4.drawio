@@ -1,50 +1,27 @@
-<mxfile host="app.diagrams.net" modified="2026-05-07T00:00:00.000Z" agent="GitHub Copilot" version="24.7.17" type="device">
-  <diagram id="context-map" name="Mapa de Contexto C4">
-    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-
-        <mxCell id="2" value="Canal do usuario" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
-          <mxGeometry x="40" y="240" width="80" height="120" as="geometry" />
-        </mxCell>
-
-        <mxCell id="3" value="ai-chat-agents\nSistema de Atendimento" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="160" y="90" width="1220" height="560" as="geometry" />
-        </mxCell>
-
-        <mxCell id="4" value="Orquestracao de Atendimento" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="240" y="170" width="280" height="80" as="geometry" />
-        </mxCell>
-
-        <mxCell id="5" value="Identidade e Validacao" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="600" y="150" width="260" height="80" as="geometry" />
-        </mxCell>
-
-        <mxCell id="6" value="Conversa e Historico" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
-          <mxGeometry x="600" y="300" width="260" height="80" as="geometry" />
-        </mxCell>
-
-        <mxCell id="7" value="Provedor externo de resposta" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
-          <mxGeometry x="950" y="230" width="220" height="80" as="geometry" />
-        </mxCell>
-
-        <mxCell id="8" value="Customer/Supplier" style="endArrow=block;html=1;strokeWidth=2;" edge="1" parent="1" source="2" target="4">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <mxCell id="9" value="Customer/Supplier" style="endArrow=block;html=1;strokeWidth=2;" edge="1" parent="1" source="4" target="5">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <mxCell id="10" value="Customer/Supplier" style="endArrow=block;html=1;strokeWidth=2;" edge="1" parent="1" source="4" target="6">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <mxCell id="11" value="Anti-Corruption Layer" style="endArrow=block;html=1;strokeWidth=2;dashed=1;" edge="1" parent="1" source="4" target="7">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-      </root>
-    </mxGraphModel>
-  </diagram>
-</mxfile>
+<mxGraphModel dx="2514" dy="743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="n1" parent="1" style="whiteSpace=wrap;html=1;fillColor=#29b6f6;fontColor=#ffffff;strokeColor=#0288d1;fontStyle=1" value="&lt;b&gt;Orquestracao de&lt;br&gt;Atendimento&lt;/b&gt;&lt;br&gt;&lt;br&gt;[Bounded Context]" vertex="1">
+      <mxGeometry height="90" width="190" x="210" y="40" as="geometry" />
+    </mxCell>
+    <mxCell id="n2" parent="1" style="whiteSpace=wrap;html=1;fillColor=#8bc34a;fontColor=#ffffff;strokeColor=#689f38;fontStyle=1" value="&lt;b&gt;Identidade e&lt;br&gt;Validacao&lt;/b&gt;&lt;br&gt;&lt;br&gt;[Bounded Context]" vertex="1">
+      <mxGeometry height="90" width="190" x="210" y="270" as="geometry" />
+    </mxCell>
+    <mxCell id="n3" parent="1" style="whiteSpace=wrap;html=1;fillColor=#ab47bc;fontColor=#ffffff;strokeColor=#8e24aa;fontStyle=1" value="&lt;b&gt;Conversa e&lt;br&gt;Historico&lt;/b&gt;&lt;br&gt;&lt;br&gt;[Bounded Context]" vertex="1">
+      <mxGeometry height="90" width="190" x="580" y="40" as="geometry" />
+    </mxCell>
+    <mxCell id="n4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#9e9e9e;" value="&lt;b&gt;Canal do usuario&lt;/b&gt;&lt;br&gt;&lt;br&gt;[Externo]" vertex="1">
+      <mxGeometry height="70" width="190" x="-120" y="50" as="geometry" />
+    </mxCell>
+    <mxCell id="e1" edge="1" parent="1" source="n4" style="edgeStyle=orthogonalEdgeStyle;dashed=1;html=1;strokeColor=#29b6f6;labelBackgroundColor=#ffffff;strokeWidth=2;" target="n1" value="&lt;b&gt;Cliente/Fornecedor&lt;/b&gt;">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e2" edge="1" parent="1" source="n1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;html=1;strokeColor=#8bc34a;labelBackgroundColor=#ffffff;strokeWidth=2;" target="n2" value="&lt;b&gt;Cliente/Fornecedor&lt;/b&gt;">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e3" edge="1" parent="1" source="n1" style="edgeStyle=orthogonalEdgeStyle;dashed=1;html=1;strokeColor=#ab47bc;labelBackgroundColor=#ffffff;strokeWidth=2;" target="n3" value="&lt;b&gt;Cliente/Fornecedor&lt;/b&gt;">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>

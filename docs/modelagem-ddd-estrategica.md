@@ -8,7 +8,7 @@ O dominio do sistema foi reduzido para tres subdominios principais, o suficiente
 |---|---|---|
 | Atendimento Conversacional | Core | E o fluxo que entrega valor direto ao usuario e concentra a experiencia principal do sistema. |
 | Identidade e Validacao | Suporte | Garante que apenas usuarios validos entrem no fluxo e que a mensagem tenha condicoes minimas de processamento. |
-| Conversa, Historico e Integracao | Generico | Sustenta persistencia, rastreabilidade e comunicacao com recursos externos sem definir o valor central do negocio. |
+| Conversa e Historico | Generico | Sustenta persistencia e rastreabilidade das interacoes sem definir o valor central do negocio. |
 
 ## 2. Definicao de Bounded Contexts
 
@@ -37,8 +37,6 @@ O diagrama C4 foi registrado em Drawio em [docs/img/Mapa-Contexto-C4.drawio](img
 | Canal do usuario | Orquestracao de Atendimento | Customer/Supplier | O canal consome o fluxo orquestrado e recebe o retorno final. |
 | Orquestracao de Atendimento | Identidade e Validacao | Customer/Supplier | A orquestracao depende da validacao para permitir a continuidade do atendimento. |
 | Orquestracao de Atendimento | Conversa e Historico | Customer/Supplier | A orquestracao depende do contexto de conversa para registrar e recuperar interacoes. |
-| Orquestracao de Atendimento | Provedor externo de resposta | Anti-Corruption Layer | A orquestracao traduz o modelo interno para o contrato do fornecedor externo. |
-| Identidade e Validacao | Cadastro/Autenticacao corporativa | Conformist | O contexto consome o modelo canonico de cadastro e autenticacao sem redefini-lo. |
 
 ## 5. Proposta de Microservicos
 
