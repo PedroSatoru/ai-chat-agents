@@ -1,0 +1,197 @@
+<mxGraphModel dx="1230" dy="646" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#f4f3ec" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="root_node" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" value="AgentIA LPS" vertex="1">
+      <mxGeometry height="40" width="160" x="470" y="20" as="geometry" />
+    </mxCell>
+    <mxCell id="n1_atend" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" value="Atendimento Conversacional" vertex="1">
+      <mxGeometry height="40" width="160" x="20" y="140" as="geometry" />
+    </mxCell>
+    <mxCell id="n1_ident" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" value="Identidade e Validacao" vertex="1">
+      <mxGeometry height="40" width="160" x="210" y="140" as="geometry" />
+    </mxCell>
+    <mxCell id="n1_conv" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" value="Conversa e Historico" vertex="1">
+      <mxGeometry height="40" width="160" x="400" y="140" as="geometry" />
+    </mxCell>
+    <mxCell id="n1_llm" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" value="Integracao LLM" vertex="1">
+      <mxGeometry height="40" width="160" x="590" y="140" as="geometry" />
+    </mxCell>
+    <mxCell id="n1_api" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" value="API HTTP" vertex="1">
+      <mxGeometry height="40" width="130" x="780" y="140" as="geometry" />
+    </mxCell>
+    <mxCell id="n2_orq" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" value="Orquestrar Atendimento" vertex="1">
+      <mxGeometry height="40" width="160" x="20" y="260" as="geometry" />
+    </mxCell>
+    <mxCell id="n2_agentes" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" value="Agentes Personalizados" vertex="1">
+      <mxGeometry height="40" width="160" x="20" y="320" as="geometry" />
+    </mxCell>
+    <mxCell id="0_EQ0rchZ7c18IwOnO9A-1" edge="1" parent="1" source="n2_val" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="n2_verif" value="">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="n2_val" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" value="Validar Identidade" vertex="1">
+      <mxGeometry height="40" width="160" x="210" y="260" as="geometry" />
+    </mxCell>
+    <mxCell id="n2_verif" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" value="Verificar Solicitacao" vertex="1">
+      <mxGeometry height="40" width="160" x="210" y="320" as="geometry" />
+    </mxCell>
+    <mxCell id="n2_auth" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" value="Autenticacao" vertex="1">
+      <mxGeometry height="40" width="160" x="210" y="380" as="geometry" />
+    </mxCell>
+    <mxCell id="tri_auth" parent="1" style="shape=triangle;direction=south;fillColor=#000000;strokeColor=#000000;" value="" vertex="1">
+      <mxGeometry height="15" width="40" x="270" y="420" as="geometry" />
+    </mxCell>
+    <mxCell id="alt_jwt" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" value="JWT" vertex="1">
+      <mxGeometry height="40" width="70" x="200" y="440" as="geometry" />
+    </mxCell>
+    <mxCell id="alt_apikey" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" value="API Key" vertex="1">
+      <mxGeometry height="40" width="80" x="300" y="440" as="geometry" />
+    </mxCell>
+    <mxCell id="n2_reg" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" value="Registrar Conversa" vertex="1">
+      <mxGeometry height="40" width="160" x="400" y="260" as="geometry" />
+    </mxCell>
+    <mxCell id="n2_cons" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" value="Consultar Historico" vertex="1">
+      <mxGeometry height="40" width="160" x="400" y="320" as="geometry" />
+    </mxCell>
+    <mxCell id="n2_ctx" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" value="Contexto Pessoal" vertex="1">
+      <mxGeometry height="40" width="160" x="400" y="380" as="geometry" />
+    </mxCell>
+    <mxCell id="n2_pers" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" value="Persistencia" vertex="1">
+      <mxGeometry height="40" width="160" x="400" y="440" as="geometry" />
+    </mxCell>
+    <mxCell id="tri_pers" parent="1" style="shape=triangle;direction=south;fillColor=#000000;strokeColor=#000000;" value="" vertex="1">
+      <mxGeometry height="15" width="40" x="460" y="480" as="geometry" />
+    </mxCell>
+    <mxCell id="alt_mongo" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" value="MongoDB" vertex="1">
+      <mxGeometry height="40" width="90" x="380" y="520" as="geometry" />
+    </mxCell>
+    <mxCell id="alt_postgres" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" value="Postgres" vertex="1">
+      <mxGeometry height="40" width="90" x="480" y="520" as="geometry" />
+    </mxCell>
+    <mxCell id="n2_int" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" value="Integrar Provedor LLM" vertex="1">
+      <mxGeometry height="40" width="160" x="590" y="260" as="geometry" />
+    </mxCell>
+    <mxCell id="alt_openrouter" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" value="OpenRouter" vertex="1">
+      <mxGeometry height="40" width="110" x="615" y="320" as="geometry" />
+    </mxCell>
+    <mxCell id="n2_api_expor" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" value="Expor API HTTP" vertex="1">
+      <mxGeometry height="40" width="130" x="780" y="260" as="geometry" />
+    </mxCell>
+    <mxCell id="e_root_atend" edge="1" parent="1" source="root_node" style="endArrow=oval;endFill=1;endSize=8;html=1;strokeColor=#000000;rounded=0;" target="n1_atend">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e_root_ident" edge="1" parent="1" source="root_node" style="endArrow=oval;endFill=1;endSize=8;html=1;strokeColor=#000000;rounded=0;" target="n1_ident">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e_root_conv" edge="1" parent="1" source="root_node" style="endArrow=oval;endFill=1;endSize=8;html=1;strokeColor=#000000;rounded=0;" target="n1_conv">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e_root_llm" edge="1" parent="1" source="root_node" style="endArrow=oval;endFill=1;endSize=8;html=1;strokeColor=#000000;rounded=0;" target="n1_llm">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e_root_api" edge="1" parent="1" source="root_node" style="endArrow=oval;endFill=1;endSize=8;html=1;strokeColor=#000000;rounded=0;" target="n1_api">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e_atend_orq" edge="1" parent="1" source="n1_atend" style="endArrow=oval;endFill=1;endSize=8;html=1;strokeColor=#000000;rounded=0;" target="n2_orq">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e_atend_agentes" edge="1" parent="1" source="n1_atend" style="endArrow=oval;endFill=0;endSize=8;html=1;strokeColor=#000000;rounded=0;" target="n2_agentes">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e_ident_val" edge="1" parent="1" source="n1_ident" style="endArrow=oval;endFill=1;endSize=8;html=1;strokeColor=#000000;rounded=0;" target="n2_val">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e_ident_verif" edge="1" parent="1" source="n1_ident" style="endArrow=oval;endFill=1;endSize=8;html=1;strokeColor=#000000;rounded=0;" target="n2_verif">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e_ident_auth" edge="1" parent="1" source="n1_ident" style="endArrow=oval;endFill=1;endSize=8;html=1;strokeColor=#000000;rounded=0;" target="n2_auth">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e_auth_jwt" edge="1" parent="1" source="n2_auth" style="endArrow=none;html=1;strokeColor=#000000;rounded=0;" target="alt_jwt">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e_auth_apikey" edge="1" parent="1" source="n2_auth" style="endArrow=none;html=1;strokeColor=#000000;rounded=0;" target="alt_apikey">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e_conv_reg" edge="1" parent="1" source="n1_conv" style="endArrow=oval;endFill=1;endSize=8;html=1;strokeColor=#000000;rounded=0;" target="n2_reg">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e_conv_cons" edge="1" parent="1" source="n1_conv" style="endArrow=oval;endFill=0;endSize=8;html=1;strokeColor=#000000;rounded=0;" target="n2_cons">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e_conv_ctx" edge="1" parent="1" source="n1_conv" style="endArrow=oval;endFill=0;endSize=8;html=1;strokeColor=#000000;rounded=0;" target="n2_ctx">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e_conv_pers" edge="1" parent="1" source="n1_conv" style="endArrow=oval;endFill=1;endSize=8;html=1;strokeColor=#000000;rounded=0;" target="n2_pers">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e_pers_mongo" edge="1" parent="1" source="n2_pers" style="endArrow=none;html=1;strokeColor=#000000;rounded=0;" target="alt_mongo">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e_pers_postgres" edge="1" parent="1" source="n2_pers" style="endArrow=none;html=1;strokeColor=#000000;rounded=0;" target="alt_postgres">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e_llm_int" edge="1" parent="1" source="n1_llm" style="endArrow=oval;endFill=1;endSize=8;html=1;strokeColor=#000000;rounded=0;" target="n2_int">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="e_llm_prov" edge="1" parent="1" source="n1_llm" style="endArrow=oval;endFill=1;endSize=8;html=1;strokeColor=#000000;rounded=0;">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="670" y="320" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="e_api_expor" edge="1" parent="1" source="n1_api" style="endArrow=oval;endFill=1;endSize=8;html=1;strokeColor=#000000;rounded=0;" target="n2_api_expor">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="legend_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5dc;strokeColor=#000000;" value="" vertex="1">
+      <mxGeometry height="80" width="250" x="820" y="600" as="geometry" />
+    </mxCell>
+    <mxCell id="leg_obrig_line" edge="1" parent="1" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1.5;" value="">
+      <mxGeometry height="50" relative="1" width="50" as="geometry">
+        <mxPoint x="840" y="630" as="sourcePoint" />
+        <mxPoint x="840" y="615" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="leg_obrig_circ" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;strokeColor=#000000;" value="" vertex="1">
+      <mxGeometry height="8" width="8" x="836" y="610" as="geometry" />
+    </mxCell>
+    <mxCell id="leg_obrig_text" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" value="Obrigatorio" vertex="1">
+      <mxGeometry height="20" width="80" x="855" y="610" as="geometry" />
+    </mxCell>
+    <mxCell id="leg_opc_line" edge="1" parent="1" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1.5;" value="">
+      <mxGeometry height="50" relative="1" width="50" as="geometry">
+        <mxPoint x="840" y="665" as="sourcePoint" />
+        <mxPoint x="840" y="650" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="leg_opc_circ" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;strokeColor=#000000;" value="" vertex="1">
+      <mxGeometry height="8" width="8" x="836" y="645" as="geometry" />
+    </mxCell>
+    <mxCell id="leg_opc_text" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" value="Opcional" vertex="1">
+      <mxGeometry height="20" width="80" x="855" y="645" as="geometry" />
+    </mxCell>
+    <mxCell id="leg_var_line" edge="1" parent="1" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1.5;" value="">
+      <mxGeometry height="50" relative="1" width="50" as="geometry">
+        <mxPoint x="980" y="630" as="sourcePoint" />
+        <mxPoint x="980" y="615" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="leg_var_tri" parent="1" style="shape=triangle;direction=north;fillColor=#ffffff;strokeColor=#000000;" value="" vertex="1">
+      <mxGeometry height="10" width="20" x="970" y="610" as="geometry" />
+    </mxCell>
+    <mxCell id="leg_var_text" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" value="Variavel" vertex="1">
+      <mxGeometry height="20" width="80" x="1000" y="610" as="geometry" />
+    </mxCell>
+    <mxCell id="leg_ou_line" edge="1" parent="1" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1.5;" value="">
+      <mxGeometry height="50" relative="1" width="50" as="geometry">
+        <mxPoint x="980" y="665" as="sourcePoint" />
+        <mxPoint x="980" y="650" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="leg_ou_tri" parent="1" style="shape=triangle;direction=north;fillColor=#000000;strokeColor=#000000;" value="" vertex="1">
+      <mxGeometry height="10" width="20" x="970" y="645" as="geometry" />
+    </mxCell>
+    <mxCell id="leg_ou_text" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" value="Ou (Or)" vertex="1">
+      <mxGeometry height="20" width="80" x="1000" y="645" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>

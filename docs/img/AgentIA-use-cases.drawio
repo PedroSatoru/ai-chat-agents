@@ -1,0 +1,141 @@
+<mxGraphModel dx="1230" dy="646" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#f4f3ec" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="frame_sistema" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=330;height=40;boundedLbl=1;verticalAlign=top;align=left;fillColor=none;strokeColor=#000000;fontFamily=Helvetica;fontSize=18;" value="AgentIA - Linha de Produto" vertex="1">
+      <mxGeometry height="680" width="820" x="150" y="80" as="geometry" />
+    </mxCell>
+    <mxCell id="actor_usuario" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeColor=#000000;" value="Usuario" vertex="1">
+      <mxGeometry height="60" width="30" x="60" y="320" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_orquestrar" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#aedaf5;strokeColor=#6b9bc7;fontFamily=Helvetica;fontSize=12;" value="&amp;lt;&amp;lt;Comum&amp;gt;&amp;gt;&lt;br&gt;Orquestrar atendimento" vertex="1">
+      <mxGeometry height="70" width="220" x="210" y="140" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_api" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#aedaf5;strokeColor=#6b9bc7;fontFamily=Helvetica;fontSize=12;" value="&amp;lt;&amp;lt;Comum&amp;gt;&amp;gt;&lt;br&gt;Expor API HTTP" vertex="1">
+      <mxGeometry height="70" width="180" x="200" y="260" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_validar" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#aedaf5;strokeColor=#6b9bc7;fontFamily=Helvetica;fontSize=12;" value="&amp;lt;&amp;lt;Comum&amp;gt;&amp;gt;&lt;br&gt;Validar identidade" vertex="1">
+      <mxGeometry height="70" width="180" x="480" y="220" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_verificar" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#aedaf5;strokeColor=#6b9bc7;fontFamily=Helvetica;fontSize=12;" value="&amp;lt;&amp;lt;Comum&amp;gt;&amp;gt;&lt;br&gt;Verificar solicitacao" vertex="1">
+      <mxGeometry height="70" width="190" x="480" y="130" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_registrar" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#aedaf5;strokeColor=#6b9bc7;fontFamily=Helvetica;fontSize=12;" value="&amp;lt;&amp;lt;Comum&amp;gt;&amp;gt;&lt;br&gt;Registrar conversa e historico" vertex="1">
+      <mxGeometry height="70" width="220" x="465" y="450" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_integrar" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#aedaf5;strokeColor=#6b9bc7;fontFamily=Helvetica;fontSize=12;" value="&amp;lt;&amp;lt;Comum&amp;gt;&amp;gt;&lt;br&gt;Integrar provedor LLM" vertex="1">
+      <mxGeometry height="70" width="180" x="500" y="340" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_agentes" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#cbe8c8;strokeColor=#90ba8b;fontFamily=Helvetica;fontSize=12;" value="&amp;lt;&amp;lt;Opcional&amp;gt;&amp;gt;&lt;br&gt;Gerenciar agentes personalizados" vertex="1">
+      <mxGeometry height="70" width="200" x="210" y="640" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_contexto" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#cbe8c8;strokeColor=#90ba8b;fontFamily=Helvetica;fontSize=12;" value="&amp;lt;&amp;lt;Opcional&amp;gt;&amp;gt;&lt;br&gt;Gerenciar contexto pessoal" vertex="1">
+      <mxGeometry height="70" width="200" x="220" y="530" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_consultar" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#cbe8c8;strokeColor=#90ba8b;fontFamily=Helvetica;fontSize=12;" value="&amp;lt;&amp;lt;Opcional&amp;gt;&amp;gt;&lt;br&gt;Consultar historico completo" vertex="1">
+      <mxGeometry height="70" width="220" x="220" y="440" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_jwt" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fdf4cd;strokeColor=#dbca86;fontFamily=Helvetica;fontSize=12;" value="&amp;lt;&amp;lt;Alternativa&amp;gt;&amp;gt;&lt;br&gt;Autenticar via JWT" vertex="1">
+      <mxGeometry height="60" width="160" x="710" y="110" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_apikey" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fdf4cd;strokeColor=#dbca86;fontFamily=Helvetica;fontSize=12;" value="&amp;lt;&amp;lt;Alternativa&amp;gt;&amp;gt;&lt;br&gt;Autenticar via API Key" vertex="1">
+      <mxGeometry height="60" width="180" x="780" y="180" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_openrouter" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#aedaf5;strokeColor=#6b9bc7;fontFamily=Helvetica;fontSize=12;align=center;verticalAlign=middle;fontColor=default;" value="&amp;lt;&amp;lt;Comum&amp;gt;&amp;gt;&lt;br&gt;OpenRouter" vertex="1">
+      <mxGeometry height="60" width="160" x="770" y="280" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_mongo" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fdf4cd;strokeColor=#dbca86;fontFamily=Helvetica;fontSize=12;" value="&amp;lt;&amp;lt;Alternativa&amp;gt;&amp;gt;&lt;br&gt;Persistir em MongoDB" vertex="1">
+      <mxGeometry height="60" width="160" x="750" y="590" as="geometry" />
+    </mxCell>
+    <mxCell id="uc_postgres" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fdf4cd;strokeColor=#dbca86;fontFamily=Helvetica;fontSize=12;" value="&amp;lt;&amp;lt;Alternativa&amp;gt;&amp;gt;&lt;br&gt;Persistir em Postgres" vertex="1">
+      <mxGeometry height="60" width="180" x="770" y="470" as="geometry" />
+    </mxCell>
+    <mxCell id="edge_user_orq" edge="1" parent="1" source="actor_usuario" style="edgeStyle=none;rounded=0;html=1;strokeColor=#000000;endArrow=none;endFill=0;" target="uc_orquestrar">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="edge_user_api" edge="1" parent="1" source="actor_usuario" style="edgeStyle=none;rounded=0;html=1;strokeColor=#000000;endArrow=none;endFill=0;" target="uc_api">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="edge_user_agentes" edge="1" parent="1" source="actor_usuario" style="edgeStyle=none;rounded=0;html=1;strokeColor=#000000;endArrow=none;endFill=0;" target="uc_agentes">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="edge_user_contexto" edge="1" parent="1" source="actor_usuario" style="edgeStyle=none;rounded=0;html=1;strokeColor=#000000;endArrow=none;endFill=0;" target="uc_contexto">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="edge_user_consultar" edge="1" parent="1" source="actor_usuario" style="edgeStyle=none;rounded=0;html=1;strokeColor=#000000;endArrow=none;endFill=0;" target="uc_consultar">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="use_orq_validar" edge="1" parent="1" source="uc_orquestrar" style="edgeStyle=none;rounded=0;html=1;strokeColor=#000000;endArrow=open;endFill=0;dashed=1;" target="uc_validar">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="use_orq_validar_lbl" connectable="0" parent="use_orq_validar" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];backgroundColor=#f4f3ec;" value="Use" vertex="1">
+      <mxGeometry relative="1" x="-0.1" as="geometry">
+        <mxPoint as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="use_orq_verificar" edge="1" parent="1" source="uc_orquestrar" style="edgeStyle=none;rounded=0;html=1;strokeColor=#000000;endArrow=open;endFill=0;dashed=1;" target="uc_verificar">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="use_orq_verificar_lbl" connectable="0" parent="use_orq_verificar" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];backgroundColor=#f4f3ec;" value="Use" vertex="1">
+      <mxGeometry relative="1" x="0.1" as="geometry">
+        <mxPoint as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="use_orq_registrar" edge="1" parent="1" source="uc_orquestrar" style="edgeStyle=none;rounded=0;html=1;strokeColor=#000000;endArrow=open;endFill=0;dashed=1;" target="uc_registrar">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="use_orq_registrar_lbl" connectable="0" parent="use_orq_registrar" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];backgroundColor=#f4f3ec;" value="Use" vertex="1">
+      <mxGeometry relative="1" x="-0.1" as="geometry">
+        <mxPoint as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="use_orq_integrar" edge="1" parent="1" source="uc_orquestrar" style="edgeStyle=none;rounded=0;html=1;strokeColor=#000000;endArrow=open;endFill=0;dashed=1;" target="uc_integrar">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="use_orq_integrar_lbl" connectable="0" parent="use_orq_integrar" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];backgroundColor=#f4f3ec;" value="Use" vertex="1">
+      <mxGeometry relative="1" x="0.1" as="geometry">
+        <mxPoint as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="ext_jwt_validar" edge="1" parent="1" source="uc_jwt" style="edgeStyle=none;rounded=0;html=1;strokeColor=#000000;endArrow=block;endFill=0;" target="uc_validar">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="ext_jwt_validar_lbl" connectable="0" parent="ext_jwt_validar" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];backgroundColor=#f4f3ec;" value="Extends" vertex="1">
+      <mxGeometry relative="1" x="-0.1" as="geometry">
+        <mxPoint as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="ext_apikey_validar" edge="1" parent="1" source="uc_apikey" style="edgeStyle=none;rounded=0;html=1;strokeColor=#000000;endArrow=block;endFill=0;" target="uc_validar">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="ext_apikey_validar_lbl" connectable="0" parent="ext_apikey_validar" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];backgroundColor=#f4f3ec;" value="Extends" vertex="1">
+      <mxGeometry relative="1" x="0.1" as="geometry">
+        <mxPoint as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="ext_openrouter_integrar" edge="1" parent="1" source="uc_openrouter" style="edgeStyle=none;rounded=0;html=1;strokeColor=#000000;endArrow=block;endFill=0;" target="uc_integrar">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="ext_openrouter_integrar_lbl" connectable="0" parent="ext_openrouter_integrar" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];backgroundColor=#f4f3ec;" value="Extends" vertex="1">
+      <mxGeometry relative="1" x="-0.1" as="geometry">
+        <mxPoint as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="ext_mongo_registrar" edge="1" parent="1" source="uc_mongo" style="edgeStyle=none;rounded=0;html=1;strokeColor=#000000;endArrow=block;endFill=0;" target="uc_registrar">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="ext_mongo_registrar_lbl" connectable="0" parent="ext_mongo_registrar" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];backgroundColor=#f4f3ec;" value="Extends" vertex="1">
+      <mxGeometry relative="1" x="-0.1" as="geometry">
+        <mxPoint x="2" y="-5" as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="ext_postgres_registrar" edge="1" parent="1" source="uc_postgres" style="edgeStyle=none;rounded=0;html=1;strokeColor=#000000;endArrow=block;endFill=0;" target="uc_registrar">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="ext_postgres_registrar_lbl" connectable="0" parent="ext_postgres_registrar" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];backgroundColor=#f4f3ec;" value="Extends" vertex="1">
+      <mxGeometry relative="1" x="0.1" as="geometry">
+        <mxPoint as="offset" />
+      </mxGeometry>
+    </mxCell>
+  </root>
+</mxGraphModel>

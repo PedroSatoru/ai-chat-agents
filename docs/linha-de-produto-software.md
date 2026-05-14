@@ -32,89 +32,12 @@ AgentIA - plataforma de atendimento conversacional com agentes especializados e 
 
 ## Modelo de Features
 
-Legenda: [M] obrigatoria, [O] opcional, [A] alternativa (exclusiva)
+![Modelo de Features](img/AgentIA-feature-model.drawio)
 
-```mermaid
-mindmap
-  root((AgentIA LPS))
-    Core[M]
-      OrquestracaoAtendimento[M]
-      IdentidadeValidacao[M]
-        ServicoUsuario[M]
-        ServicoValidacaoIdentidade[M]
-        ServicoVerificacaoSolicitacao[M]
-      ConversaHistorico[M]
-        ChatService[M]
-        RepositorioConversa[M]
-      APIHTTP[M]
-      IntegracaoLLM[M]
-    Variabilidades
-      Autenticacao[A]
-        JWT
-        APIKey
-      ProvedorLLM[A]
-        OpenRouter
-        LLM_Local
-      PersistenciaConversa[A]
-        MongoDB
-        Postgres
-      AgentesPersonalizados[O]
-      ContextoPessoal[O]
-      ConsultaHistorico[O]
-      Multicanal[O]
-      AuditoriaAutenticacao[O]
-```
 
 ## Diagrama de Casos de Uso
 
-Legenda: (C) comum, (O) opcional, (A) alternativo
-
-```mermaid
-flowchart LR
-    U[Usuario]
-    LLM[Provedor LLM]
-
-    subgraph S[System AgentIA LPS]
-        UC1["Submeter solicitacao de atendimento (C)"]
-        UC2["Validar identidade (C)"]
-        UC3["Verificar conteudo da solicitacao (C)"]
-        UC4["Registrar conversa e historico (C)"]
-        UC5["Enviar mensagem ao LLM (C)"]
-        UC6["Receber resposta e apresentar retorno (C)"]
-
-        UC7["Criar agente personalizado (O)"]
-        UC8["Editar agente personalizado (O)"]
-        UC9["Gerenciar contexto pessoal (O)"]
-        UC10["Consultar historico (O)"]
-        UC11["Selecionar agente para conversa (O)"]
-
-        UC12["Autenticar via JWT (A)"]
-        UC13["Autenticar via API Key (A)"]
-        UC14["Atender via OpenRouter (A)"]
-        UC15["Atender via LLM local (A)"]
-    end
-
-    U --> UC1
-    U --> UC2
-    U --> UC3
-    U --> UC4
-    U --> UC6
-
-    U --> UC7
-    U --> UC8
-    U --> UC9
-    U --> UC10
-    U --> UC11
-
-    UC2 -.alternativa.-> UC12
-    UC2 -.alternativa.-> UC13
-
-    UC5 --> LLM
-    UC5 -.alternativa.-> UC14
-    UC5 -.alternativa.-> UC15
-
-    UC1 --> UC2 --> UC3 --> UC4 --> UC5 --> UC6
-```
+![Diagrama de Casos de Uso](img/AgentIA-use-cases.drawio)
 
 ## Produtos da LPS
 
